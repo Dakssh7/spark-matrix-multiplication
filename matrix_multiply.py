@@ -6,7 +6,7 @@ from pyspark.mllib.linalg.distributed import *
 from pyspark.sql import SparkSession
 from scipy.sparse import lil_matrix
 
-app_name = 'PySpark Matrix Multiplication Example'
+app_name = 'PySpark Matrix Multiplication'
 master = 'local'
 spark = SparkSession.builder.appName(app_name).master(master).getOrCreate()
 spark.sparkContext.setLogLevel("ERROR")
@@ -58,9 +58,9 @@ print('Best Sequential execution time (seconds):', end - start)
 A_rdd = spark.sparkContext.parallelize(A)
 B_rdd = spark.sparkContext.parallelize(B)
 
-start = timer() #
+start = timer() 
 C_matrix = as_block_matrix(A_rdd, N, N).multiply(as_block_matrix(B_rdd, N, N)) #
-end = timer() #
+end = timer() 
 
 print('Apache Spark execution time (seconds):', end - start)
 
